@@ -23,4 +23,9 @@ streamlit.header("Fruityvice Fruit Advice!")
 
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruityvice_response.json())
+streamlit.text(fruityvice_response.json()) #just write the data to the screen
+
+# normalize the json data
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# display normalized data (table)
+streamlit.dataframe(fruityvice_normalized)
